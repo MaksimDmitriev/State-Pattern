@@ -2,8 +2,8 @@ package com.api;
 
 class AheadOfRemoteState extends BaseState {
 
-    AheadOfRemoteState(FileManager mFileManager) {
-        super(mFileManager);
+    AheadOfRemoteState(GitFileManager mGitFileManager) {
+        super(mGitFileManager);
     }
 
     @Override
@@ -26,8 +26,4 @@ class AheadOfRemoteState extends BaseState {
 
     }
 
-    @Override
-    public void push() {
-
-    }
 }

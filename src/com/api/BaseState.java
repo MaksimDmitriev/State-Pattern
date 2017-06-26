@@ -2,10 +2,10 @@ package com.api;
 
 abstract class BaseState implements State {
 
-    final FileManager mFileManager;
+    final GitFileManager mGitFileManager;
 
-    BaseState(FileManager fileManager) {
-        mFileManager = fileManager;
+    BaseState(GitFileManager gitFileManager) {
+        mGitFileManager = gitFileManager;
     }
 
 }

@@ -10,5 +10,4 @@ public interface State {
 
     void commit();
 
-    void push();
 }

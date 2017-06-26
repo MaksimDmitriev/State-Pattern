@@ -1,13 +1,13 @@
 package com.api;
 
 
-class DirtyState extends BaseState {
+class ModifiedState extends BaseState {
 
     private final State mStagedState;
 
-    DirtyState(FileManager fileManager) {
-        super(fileManager);
-        mStagedState = new StagedState(fileManager);
+    ModifiedState(GitFileManager gitFileManager) {
+        super(gitFileManager);
+        mStagedState = new StagedState(gitFileManager);
     }
 
     @Override
@@ -17,7 +17,7 @@ class DirtyState extends BaseState {
 
     @Override
     public void removeFile() {
-        // TODO: if it's the last file, we will move to CleanState.
+        // TODO: if it's the last file, we will move to CommittedState.
         // But here for simplicity we ignore this
     }
 
@@ -25,15 +25,11 @@ class DirtyState extends BaseState {
     public void addToIndex() {
         // TODO: if there are no files, we won't move anywhere.
         // But here for simplicity we ignore this
-        mFileManager.setCurrentState(mStagedState);
+        mGitFileManager.setCurrentState(mStagedState);
     }
 
     @Override
     public void commit() {
     }
 
-    @Override
-    public void push() {
-
-    }
 }

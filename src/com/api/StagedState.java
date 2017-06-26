@@ -2,18 +2,23 @@ package com.api;
 
 class StagedState extends BaseState {
 
-    StagedState(FileManager fileManager) {
-        super(fileManager);
+    private final State mModifiedState;
+    private final State mCommittedState;
+
+    StagedState(GitFileManager gitFileManager) {
+        super(gitFileManager);
+        mModifiedState = new ModifiedState(gitFileManager);
+        mCommittedState = new CommittedState(gitFileManager);
     }
 
     @Override
     public void addFile() {
-
+        mGitFileManager.setCurrentState(mModifiedState);
     }
 
     @Override
     public void removeFile() {
-
+        mGitFileManager.setCurrentState(mModifiedState);
     }
 
     @Override
@@ -23,11 +28,7 @@ class StagedState extends BaseState {
 
     @Override
     public void commit() {
-
+        mGitFileManager.setCurrentState(mCommittedState);
     }
 
-    @Override
-    public void push() {
-
-    }
 }
