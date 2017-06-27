@@ -5,9 +5,8 @@ import com.api.GitFileManager;
 class Main {
 
     public static void main(String[] args) {
-        GitFileManager gitFileManager = new GitFileManager();
-        gitFileManager.addFile("1");
-        gitFileManager.addFile("1");
-        gitFileManager.addFile("1");
+        GitFileManager gitFileManager = GitFileManager.getInstance();
+        gitFileManager.addFile();
+        gitFileManager.commitFiles();
     }
 }

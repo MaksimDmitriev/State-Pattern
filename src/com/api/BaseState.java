@@ -8,4 +8,8 @@ abstract class BaseState implements State {
         mGitFileManager = gitFileManager;
     }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }

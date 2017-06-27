@@ -10,23 +10,18 @@ class CommittedState extends BaseState {
     }
 
     @Override
-    public void addFile() {
+    public void onFilesChanged() {
         mGitFileManager.setCurrentState(mNextState);
     }
 
     @Override
-    public void removeFile() {
-        mGitFileManager.setCurrentState(mNextState);
+    public void onAddedToIndex() {
+        System.err.println("Nothing to add to index");
     }
 
     @Override
-    public void addToIndex() {
-
-    }
-
-    @Override
-    public void commit() {
-
+    public void onCommitted() {
+        System.err.println("Nothing to commit");
     }
 
 }

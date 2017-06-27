@@ -2,12 +2,10 @@ package com.api;
 
 public interface State {
 
-    void addFile();
+    void onFilesChanged();
 
-    void removeFile();
+    void onAddedToIndex();
 
-    void addToIndex();
-
-    void commit();
+    void onCommitted();
 
 }

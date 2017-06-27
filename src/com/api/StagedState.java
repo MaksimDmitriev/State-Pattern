@@ -12,22 +12,17 @@ class StagedState extends BaseState {
     }
 
     @Override
-    public void addFile() {
+    public void onFilesChanged() {
         mGitFileManager.setCurrentState(mModifiedState);
     }
 
     @Override
-    public void removeFile() {
-        mGitFileManager.setCurrentState(mModifiedState);
-    }
-
-    @Override
-    public void addToIndex() {
+    public void onAddedToIndex() {
 
     }
 
     @Override
-    public void commit() {
+    public void onCommitted() {
         mGitFileManager.setCurrentState(mCommittedState);
     }
 

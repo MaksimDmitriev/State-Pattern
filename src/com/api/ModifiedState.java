@@ -11,25 +11,20 @@ class ModifiedState extends BaseState {
     }
 
     @Override
-    public void addFile() {
+    public void onFilesChanged() {
 
     }
 
     @Override
-    public void removeFile() {
-        // TODO: if it's the last file, we will move to CommittedState.
-        // But here for simplicity we ignore this
-    }
-
-    @Override
-    public void addToIndex() {
+    public void onAddedToIndex() {
         // TODO: if there are no files, we won't move anywhere.
         // But here for simplicity we ignore this
         mGitFileManager.setCurrentState(mStagedState);
     }
 
     @Override
-    public void commit() {
+    public void onCommitted() {
+        System.err.println("Nothing to commit");
     }
 
 }
