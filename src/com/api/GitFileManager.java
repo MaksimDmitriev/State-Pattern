@@ -4,6 +4,10 @@ public class GitFileManager {
 
     private static GitFileManager sInstance;
 
+    private final State mCommittedState;
+    private final State mStagedState;
+    private final State mModifiedState;
+
     private State mCurrentState;
 
     public static GitFileManager getInstance() {
@@ -15,7 +19,11 @@ public class GitFileManager {
 
 
     private GitFileManager() {
-        mCurrentState = new CommittedState(this);
+        mCommittedState = new CommittedState(this);
+        mModifiedState = new ModifiedState(this);
+        mStagedState = new StagedState(this);
+
+        mCurrentState = mCommittedState;
     }
 
     void setCurrentState(State state) {
@@ -24,7 +32,7 @@ public class GitFileManager {
     }
 
     public void addFile() {
-        System.out.println("onFilesChanged");
+        System.out.println("addFile");
         mCurrentState.onFilesChanged();
         // TODO: are you modifying mCurrentState on which you just called onFilesChanged()?
     }
@@ -45,8 +53,18 @@ public class GitFileManager {
     }
 
     public void commitFiles() {
-        System.out.println("commitFiles");
         mCurrentState.onCommitted();
     }
 
+    State getCommittedState() {
+        return mCommittedState;
+    }
+
+    State getModifiedState() {
+        return mModifiedState;
+    }
+
+    State getStagedState() {
+        return mStagedState;
+    }
 }

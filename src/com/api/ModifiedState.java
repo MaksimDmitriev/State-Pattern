@@ -3,11 +3,8 @@ package com.api;
 
 class ModifiedState extends BaseState {
 
-    private final State mStagedState;
-
     ModifiedState(GitFileManager gitFileManager) {
         super(gitFileManager);
-        mStagedState = new StagedState(gitFileManager);
     }
 
     @Override
@@ -19,7 +16,7 @@ class ModifiedState extends BaseState {
     public void onAddedToIndex() {
         // TODO: if there are no files, we won't move anywhere.
         // But here for simplicity we ignore this
-        mGitFileManager.setCurrentState(mStagedState);
+        mGitFileManager.setCurrentState(mGitFileManager.getStagedState());
     }
 
     @Override
